@@ -1,0 +1,47 @@
+---
+import Logo from "../assets/logo-mindbodygreen.svg";
+import EnvelopeSimple from "@phosphor-icons/core/assets/regular/envelope-simple.svg";
+import MagnifyingGlass from "@phosphor-icons/core/assets/regular/magnifying-glass.svg";
+import User from "@phosphor-icons/core/assets/regular/user.svg";
+
+const sections = [
+  { label: "READ", href: "/", active: true },
+  { label: "LEARN", href: "https://institute.mindbodygreen.com/health-coach-certification" },
+  { label: "LISTEN", href: "https://podcasts.apple.com/us/podcast/the-mindbodygreen-podcast/id1246494475" },
+];
+---
+
+<nav id="article-navigation" class="sticky top-0 z-40 border-b border-[#f1f1f1] bg-white text-[#272727]">
+  <div class="flex h-[60px] items-center justify-between px-5 md:h-[78px] md:px-10">
+    <a href="/" aria-label="mindbodygreen home" class="flex shrink-0 items-center">
+      <Logo role="img" aria-label="mindbodygreen" class="h-auto w-[130px] text-black md:w-[170px]" />
+    </a>
+
+    <div class="flex items-center">
+      <div class="hidden items-center gap-9 text-[17px] font-medium tracking-[0.14em] lg:flex">
+        {
+          sections.map((s) => (
+            <a href={s.href} class:list={["transition-colors hover:text-[#2360B2]", s.active && "text-[#2360B2]"]}>
+              {s.label}
+            </a>
+          ))
+        }
+        <span class="h-[30px] w-px bg-black"></span>
+        <a href="https://shop.mindbodygreen.com" class="-ml-4 font-bold hover:text-[#2360B2]">SHOP</a>
+        <span class="-ml-4 h-[30px] w-px bg-black"></span>
+      </div>
+
+      <div class="flex items-center gap-4 md:ml-7 md:gap-[18px]">
+        <a href="/newsletters" aria-label="Newsletters" class="hover:opacity-70">
+          <EnvelopeSimple width={23} height={23} aria-hidden="true" />
+        </a>
+        <a href="/search" aria-label="Search" class="hover:opacity-70">
+          <MagnifyingGlass width={23} height={23} aria-hidden="true" />
+        </a>
+        <a href="/account/login" aria-label="Account" class="hover:opacity-70">
+          <User width={23} height={23} aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,55 @@
+---
+import FocusSlide from "./FocusSlide.astro";
+import bg from "../../assets/vision/passions-bg.png";
+import title from "../../assets/vision/passions-title.png";
+import labelBackyard from "../../assets/vision/passions-label-backyard.png";
+import labelJournal from "../../assets/vision/passions-label-journal.png";
+import labelGarden from "../../assets/vision/passions-label-garden.png";
+
+export interface Props {
+  next: string;
+}
+const { next } = Astro.props;
+---
+
+<FocusSlide
+  id="pursue-passions"
+  next={next}
+  bg={bg}
+  title={{ image: title, alt: "vision helps you pursue your passions", left: "10.5%", top: "18.13cqw", width: "30.47%" }}
+  bodyTop="21.6cqw"
+  bodyHtml="Aging well can look different for everyone.<br />For one person, it’s tending to a garden<br />every morning. For someone else, it’s<br />reading a book in the afternoon, trying a<br />new recipe, or traveling. Regardless, having<br />passions in life may help you maintain a<br />higher quality of life as you age."
+  hotspots={[
+    {
+      label: "backyard",
+      image: labelBackyard,
+      left: "65.7%",
+      top: "66.5cqw",
+      width: "13.17%",
+      popupWidth: "35.7cqw",
+      html: "“Vision changes can make it harder to stay connected in ways we might not immediately realize. If someone has difficulty recognizing faces, reading a menu, driving to an event, or participating in a favorite hobby, they may begin to pull back from the activities they once enjoyed,” says Smiley.",
+    },
+    {
+      label: "journal",
+      image: labelJournal,
+      left: "26.5%",
+      top: "78.25cqw",
+      width: "11.23%",
+      popupWidth: "33.9cqw",
+      html: "One of the most common age-related vision changes is presbyopia, which can make it harder to focus clearly on nearby objects. It often becomes noticeable during everyday close-up tasks, like reading, and can greatly impact day-to-day life.",
+    },
+    {
+      label: "garden",
+      image: labelGarden,
+      left: "71.6%",
+      top: "85.1cqw",
+      width: "10.4%",
+      popupWidth: "29.1cqw",
+      html: "Research shows that having hobbies is associated with slower biological aging.<sup>1</sup> Clear, healthy vision means you can stay more engaged in the hobbies that bring meaning to your life—throughout your life.",
+    },
+  ]}
+  citations={[{ label: "Journal of Global Health", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12208283/" }]}
+  seeMoreTop="106.4cqw"
+  citationsTop="109.7cqw"
+  citationsInset="30%"
+/>

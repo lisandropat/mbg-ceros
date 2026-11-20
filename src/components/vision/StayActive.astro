@@ -1,0 +1,68 @@
+---
+import FocusSlide from "./FocusSlide.astro";
+import bg from "../../assets/vision/active-bg.png";
+import title from "../../assets/vision/active-title.png";
+import labelSummit from "../../assets/vision/active-label-summit-view.png";
+import labelTrees from "../../assets/vision/active-label-trees.png";
+import labelTrailLeft from "../../assets/vision/active-label-trail-left.png";
+import labelTrailRight from "../../assets/vision/active-label-trail-right.png";
+
+export interface Props {
+  next: string;
+}
+const { next } = Astro.props;
+---
+
+<FocusSlide
+  id="stay-active"
+  next={next}
+  bg={bg}
+  title={{ image: title, alt: "vision helps you stay active", left: "14.7%", top: "20.6cqw", width: "26.2%" }}
+  bodyHtml="Movement supports everything from<br />cardiovascular<sup>1</sup> and cognitive health<sup>2</sup> to<br />muscle strength<sup>3</sup> and mobility.<sup>4</sup> Healthy vision<br />helps us safely and confidently navigate the<br />environments where movement happens."
+  hotspots={[
+    {
+      label: "summit view",
+      image: labelSummit,
+      left: "32.5%",
+      top: "67.36cqw",
+      width: "17.76%",
+      popupWidth: "27.8cqw",
+      html: "Being able to see near, middle-distance, and far means you don’t miss the details or the big stuff. Unfortunately, many people start to experience vision changes in their 40s, which can affect up close or near vision.",
+    },
+    {
+      label: "trees",
+      image: labelTrees,
+      left: "70%",
+      top: "71.35cqw",
+      width: "8.8%",
+      popupWidth: "31.9cqw",
+      html: "The benefits of staying active go far beyond physical fitness. Movement creates opportunities to get outside, explore new places, and spend time in nature, all of which have a positive impact on long-term health.<sup>6</sup>",
+    },
+    {
+      label: "trail",
+      image: labelTrailLeft,
+      left: "21.7%",
+      top: "83.79cqw",
+      width: "8.8%",
+      popupWidth: "31.8cqw",
+      html: "Staying mobile is one of the single most important drivers of healthy living with age.<sup>5</sup> Taking care of your vision is one way to support your ability to keep moving confidently.",
+    },
+    {
+      label: "trail",
+      image: labelTrailRight,
+      left: "64.4%",
+      top: "85.71cqw",
+      width: "8.8%",
+      popupWidth: "39cqw",
+      html: "“When vision changes go unaddressed, everyday activities become harder, confidence declines, and the risk of falls goes up. Uncorrected vision is one of the more fixable fall risk factors we have, which is a big part of why I strongly encourage annual exams with my older patients,”<br />says Chris Smiley, O.D., CEO of Vision Professionals (Columbus, OH) and VSP network optometrist.",
+    },
+  ]}
+  citations={[
+    { label: "Frontiers in Cardiovascular Medicine", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6557987/" },
+    { label: "Frontiers in Psychology", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5934999/" },
+    { label: "CDC", href: "https://www.cdc.gov/physical-activity-basics/benefits/index.html" },
+    { label: "American Optometric Association", href: "https://www.aoa.org/healthy-eyes/eye-health-for-life/adult-vision-41-to-60-years-of-age" },
+    { label: "BioMed Research International", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6304477/" },
+    { label: "International Journal of Environmental Research and Public Health", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3546779/" },
+  ]}
+/>

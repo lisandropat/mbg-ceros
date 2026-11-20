@@ -1,0 +1,59 @@
+---
+import FocusSlide from "./FocusSlide.astro";
+import bg from "../../assets/vision/connected-bg.png";
+import title from "../../assets/vision/connected-title.png";
+import labelLovedOne from "../../assets/vision/connected-label-loved-one.png";
+import labelFamily from "../../assets/vision/connected-label-family.png";
+import labelMeal from "../../assets/vision/connected-label-meal.png";
+
+export interface Props {
+  next: string;
+}
+const { next } = Astro.props;
+---
+
+<FocusSlide
+  id="stay-connected"
+  next={next}
+  bg={bg}
+  title={{ image: title, alt: "vision is essential for staying connected", left: "10.5%", top: "18.75cqw", width: "30.45%" }}
+  bodyHtml="Research has increasingly highlighted social<br />connection as an important component of<br />long-term health and well-being.<sup>1</sup> And<br />vision can play an easy-to-overlook role in<br />helping us stay engaged."
+  hotspots={[
+    {
+      label: "loved one",
+      image: labelLovedOne,
+      left: "48.64%",
+      top: "67.2cqw",
+      width: "13.86%",
+      popupWidth: "32.9cqw",
+      html: "Connection happens through more than conversation. Facial expressions, gestures, and other visual details can all contribute to how we interact with one another. In fact, a smile can help reduce biomarkers of stress—for both people.<sup>2</sup>",
+    },
+    {
+      label: "family",
+      image: labelFamily,
+      left: "27.3%",
+      top: "82.2cqw",
+      width: "10.02%",
+      popupWidth: "29.9cqw",
+      html: "Long-term research shows that social connectedness improves healthy aging biomarkers across every age group, from adolescence to late in life.<sup>3</sup> While vision challenges can affect people of any age, they often become even more apparent during midlife. This is when you should pay special attention to eye health.",
+    },
+    {
+      label: "meal",
+      image: labelMeal,
+      left: "63.7%",
+      top: "88.8cqw",
+      width: "8.88%",
+      popupWidth: "34.4cqw",
+      html: "People who eat at least one meal a week with others have significantly better overall well-being.<sup>4</sup> And vision is woven into the magic of shared meals, from seeing your favorite recipe clearly to sharing the moment with friends and family.",
+    },
+  ]}
+  citations={[
+    { label: "World Psychiatry", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11403199/" },
+    { label: "NIH", href: "https://www.nih.gov/news-events/nih-research-matters/smiles-affect-response-stress" },
+    { label: "The Proceedings of the National Academy of Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4725506/" },
+    { label: "Scientific Reports", href: "https://www.nature.com/articles/s41598-026-46771-9" },
+  ]}
+  seeMoreTop="106.4cqw"
+  citationsTop="109.7cqw"
+  citationsInset="28%"
+/>

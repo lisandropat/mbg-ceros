@@ -1,0 +1,202 @@
+---
+import { Image } from "astro:assets";
+import CaretLeft from "@phosphor-icons/core/assets/regular/caret-left.svg";
+import CaretRight from "@phosphor-icons/core/assets/regular/caret-right.svg";
+import ArrowRight from "@phosphor-icons/core/assets/light/arrow-right-light.svg";
+import ArrowCounterClockwise from "@phosphor-icons/core/assets/regular/arrow-counter-clockwise.svg";
+import title from "../../assets/vision/support-title.png";
+import chris from "../../assets/vision/support-chris-smiley.png";
+import number1 from "../../assets/vision/support-number-1.png";
+import number2 from "../../assets/vision/support-number-2.png";
+import number3 from "../../assets/vision/support-number-3.png";
+import number4 from "../../assets/vision/support-number-4.png";
+import number5 from "../../assets/vision/support-number-5.png";
+
+export interface Props {
+  start: string;
+}
+const { start } = Astro.props;
+
+const vspDoctor = "https://www.vsp.com/eye-doctor?utm_source=mindbodygreen&utm_medium=article_paid&utm_campaign=gcc_general";
+const link = (href: string, text: string) => `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+
+const tips = [
+  {
+    number: number1,
+    title: "Get regular<br />comprehensive eye exams",
+    size: "1.19cqw",
+    paragraphs: [
+      "You shouldn’t have to wait until something feels noticeably different to prioritize your eye health.",
+      "Eye exams are about more than updating your prescription. Through a comprehensive eye exam, your eye doctor can assess how well you’re seeing and help detect changes in your vision and eye health before they become noticeable. “That includes the age-related eye conditions we watch for, such as cataracts, glaucoma, macular degeneration, and dry eye, along with systemic issues like diabetes and high blood pressure,” says Smiley. “Many of these have no noticeable symptoms in the early stages, which is exactly why routine exams matter.”",
+      "In addition, eye exams can help illuminate broader health considerations. “During a comprehensive eye exam, your eye doctor looks beyond vision correction needs. We also evaluate the structure and function of the eyes, which can reveal signs of more than 270 health conditions,” says Smiley.<sup>1</sup>",
+    ],
+  },
+  {
+    number: number2,
+    title: "Know what can<br />change with age",
+    size: "1.49cqw",
+    paragraphs: [
+      "Changes in vision are a normal part of getting older, but that doesn’t mean they should be ignored.",
+      "One common example is presbyopia, the gradual loss of the eye’s ability to focus on objects up close. “As we get older, the lens in our eye hardens and becomes less flexible, impacting how it focuses light on the retina,” says Smiley. You might notice yourself holding your phone farther away, needing brighter light to read, or struggling to shift your focus between near and far distances.",
+    ],
+  },
+  {
+    number: number3,
+    title: "Find vision solutions<br />that evolve with you",
+    size: "1.05cqw",
+    paragraphs: [
+      "If presbyopia is making it harder to see clearly at different distances, progressive lenses can help simplify everyday vision by combining multiple prescriptions into a single pair of glasses.",
+      `${link("https://patient.unitylenses.com/", "Unity V3 Elite Progressive Lenses")} are designed to support vision across near, intermediate, and distance viewing, helping your eyes transition smoothly as your focus shifts throughout the day.`,
+      "“This is especially common for people who already wear glasses for distance and begin to experience presbyopia, making close-up activities more difficult. Progressive lenses combine those prescriptions into one lens without the visible lines found in traditional bifocals or trifocals,” says Smiley.",
+      "Because your vision needs are personal, working with an eye doctor can help determine the right solution for your eyes and lifestyle. They can also help you with the transition to progressive lenses, notes Smiley: “Most people adapt within a few days to a couple of weeks, and accurate measurements and a proper fit make a real difference in how quickly that happens.”",
+      "<strong>Want to try progressive lenses?</strong>",
+    ],
+  },
+  {
+    number: number4,
+    title: "Make vision care<br />easier to navigate",
+    size: "1.49cqw",
+    paragraphs: [
+      "Being proactive is simpler when you know where to turn.",
+      `With ${link("https://www.vsp.com/eye-doctor", "VSP Vision Care")}, members have access to comprehensive vision coverage and an extensive network of more than 44,000 eye doctors across the country who can provide personalized care as their needs evolve. VSP Vision Care also offers a ${link("https://www.vsp.com/offers/premier-edge-offers/glasses-and-sunglasses/Premier-Edge-Promise", "worry-free eyewear guarantee")} for added confidence in your vision care.`,
+    ],
+  },
+  {
+    number: number5,
+    title: "Care for your eyes<br />holistically",
+    size: "1.19cqw",
+    paragraphs: [
+      "Your eye health impacts your day-to-day life—and in the same way, your daily habits can impact your eyes.",
+      "“Our eye health is closely connected to our overall well-being, so taking care of your whole body is one of the best ways to support vision for years to come,” says Smiley.",
+      "When it comes to protecting your vision long-term, the basics go a long way.",
+      "“Small, consistent habits can make a meaningful difference in your eye health. Wear UV-protective eyewear, manage chronic conditions like diabetes and high blood pressure, eat a diet with plenty of leafy greens and omega-3s, and stay physically active,” says Smiley. “Pair those habits with an annual eye exam and you have covered most of what is within your control.”",
+      "<strong>Want more guidance on your vision health?</strong>",
+    ],
+  },
+];
+---
+
+<section class="@container relative aspect-[2576/1279] w-full overflow-hidden bg-[#F7F7F4] text-black" aria-labelledby="vision-support-title">
+  <h2 id="vision-support-title" class="absolute left-[9.32%] top-[4.35cqw] w-[35.9%]">
+    <Image src={title} alt="find the vision support you need" widths={[519, 1037]} sizes="36cqw" data-reveal class="block w-full" />
+  </h2>
+
+  <div data-reveal style="--reveal-delay: 150ms" class="absolute left-[10.33%] top-[15.2cqw] whitespace-nowrap text-[1.2cqw] leading-[1.05] [&>p+p]:mt-[1lh]">
+    <p>There’s no single secret to aging well.</p>
+    <p>It’s the everyday habits that help us continue moving,<br />connecting, exploring, creating, and participating in<br />the lives we’ve built. Vision health is woven through<br />all of them.</p>
+    <p>So as you think about the health habits you want to<br />carry with you into the years ahead, make sure eye<br />care is part of the picture.</p>
+    <p>Here’s where to start</p>
+  </div>
+
+  <div data-reveal style="--reveal-delay: 300ms" class="absolute left-[10.33%] top-[33.2cqw] flex items-center gap-[1.6cqw]">
+    <Image src={chris} alt="Chris Smiley, O.D." widths={[130, 260]} sizes="9cqw" class="w-[9.08cqw] shrink-0 rounded-full" />
+    <div class="whitespace-nowrap">
+      <p class="text-[1.3cqw] leading-[1.13]">Meet our expert:<br /><strong class="font-bold">Chris Smiley, O.D.</strong></p>
+      <p class="mt-[1.2cqw] text-[1.15cqw] leading-[1.15]">
+        Chris Smiley, O.D., is the CEO of<br />Vision Professionals in Columbus,<br />OH and a <a href="https://www.vsp.com/eye-doctor" target="_blank" rel="noopener" class="underline hover:opacity-70">VSP network optometrist</a>.
+      </p>
+    </div>
+  </div>
+
+  <a
+    href={start}
+    data-reveal
+    style="--reveal-delay: 450ms"
+    class="group absolute left-[10.33%] top-[44.6cqw] flex items-center gap-[0.8cqw] rounded-full bg-[#1D3345] px-[2cqw] py-[0.9cqw] text-[1.15cqw] font-medium leading-none tracking-[0.06em] text-white transition-colors hover:bg-black"
+  >
+    <ArrowCounterClockwise aria-hidden="true" class="w-[1.4cqw] transition-[rotate] duration-500 group-hover:-rotate-180" />
+    <span>BACK TO THE START</span>
+  </a>
+
+  <div
+    data-reveal
+    data-carousel
+    style="--reveal-delay: 200ms"
+    role="region"
+    aria-roledescription="carousel"
+    aria-label="Where to start"
+    class="absolute left-[49.96%] top-[1.55cqw] h-[43.9cqw] w-[39.2cqw]"
+  >
+    <div class="h-full overflow-hidden rounded-[2.4cqw] border-[max(2px,0.12cqw)] border-[#7CBFCB] bg-white">
+      <div data-track class="flex h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+        {
+          tips.map((tip, i) => (
+            <article
+              class="flex h-full w-full shrink-0 flex-col px-[3.73cqw] pb-[3.1cqw] pt-[3cqw] text-[#1D3345]"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${tips.length}`}
+              data-slide-item
+              inert={i !== 0}
+            >
+              <header class="flex items-center gap-[1.67cqw]">
+                <Image src={tip.number} alt={`#${i + 1}`} widths={[tip.number.width]} sizes="5cqw" class="h-[3.1cqw] w-auto" />
+                <h3 class="whitespace-nowrap text-[2cqw] font-bold leading-[1.04]" set:html={tip.title} />
+              </header>
+              <hr class="mt-[1.5cqw] w-[31.56cqw] border-0 border-t border-[#7CBFCB]" />
+              <div
+                class="mt-[2cqw] flex-1 leading-[1.05] [&_a]:underline [&_a:hover]:opacity-70 [&_strong]:font-bold [&_sup]:text-[0.6em] [&>p+p]:mt-[1lh]"
+                style={`font-size:${tip.size}`}
+              >
+                {tip.paragraphs.map((p) => <p set:html={p} />)}
+              </div>
+              <a
+                href={vspDoctor}
+                target="_blank"
+                rel="noopener"
+                class="group/cta mt-[1cqw] inline-flex items-center gap-[0.9cqw] self-start text-[1.22cqw] leading-none tracking-[0.08em] hover:opacity-80"
+              >
+                <span class="underline decoration-[max(1px,0.06cqw)] underline-offset-[0.35cqw]">Find a VSP network doctor near you</span>
+                <ArrowRight aria-hidden="true" class="w-[1.45cqw] transition-[translate] duration-300 group-hover/cta:translate-x-[0.3cqw]" />
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <button
+      type="button"
+      data-prev
+      aria-label="Previous tip"
+      class="absolute -left-[1.59cqw] top-[22.1cqw] flex h-[3.18cqw] w-[3.18cqw] -translate-y-1/2 items-center justify-center rounded-full bg-[#7CBFCB] text-white transition-transform hover:scale-105"
+    >
+      <CaretLeft aria-hidden="true" class="w-[1.5cqw]" />
+    </button>
+    <button
+      type="button"
+      data-next
+      aria-label="Next tip"
+      class="absolute -right-[1.59cqw] top-[22.1cqw] flex h-[3.18cqw] w-[3.18cqw] -translate-y-1/2 items-center justify-center rounded-full bg-[#7CBFCB] text-white transition-transform hover:scale-105"
+    >
+      <CaretRight aria-hidden="true" class="w-[1.5cqw]" />
+    </button>
+  </div>
+
+  <p class="absolute left-[49.96%] top-[46.9cqw] w-[39.2cqw] text-center text-[max(9px,0.78cqw)]">
+    Citations: 1) <a
+      href="https://www.aoa.org/AOA/Documents/Healthy%20Eyes/Eye%20and%20vision%20conditions/Systemic%20Conditions%20with%20Ocular%20and%20Visual%20Manifestations.pdf"
+      target="_blank"
+      rel="noopener"
+      class="underline hover:opacity-70">AOA</a
+    >
+  </p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>("[data-track]")!;
+    const items = [...carousel.querySelectorAll<HTMLElement>("[data-slide-item]")];
+    let index = 0;
+    const go = (next: number) => {
+      index = (next + items.length) % items.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      items.forEach((item, i) => (item.inert = i !== index));
+    };
+    carousel.querySelector("[data-prev]")?.addEventListener("click", () => go(index - 1));
+    carousel.querySelector("[data-next]")?.addEventListener("click", () => go(index + 1));
+    carousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") go(index - 1);
+      if (event.key === "ArrowRight") go(index + 1);
+    });
+  });
+</script>

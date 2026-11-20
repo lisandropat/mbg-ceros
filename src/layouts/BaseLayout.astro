@@ -1,0 +1,99 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  image: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  type?: "article" | "website";
+  publishedTime?: string;
+  modifiedTime?: string;
+  authorUrl?: string;
+  tags?: string[];
+  twitterImage?: string;
+  twitterCreator?: string;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  image,
+  imageWidth = 2000,
+  imageHeight = 1200,
+  type = "article",
+  publishedTime,
+  modifiedTime,
+  authorUrl,
+  tags = [],
+  twitterImage = image,
+  twitterCreator,
+  jsonLd = [],
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="max-image-preview:large, index" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title="mindbodygreen RSS Feed" href="/rss/featured.xml" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
+    <meta property="og:site_name" content="mindbodygreen" />
+    <meta property="og:description" content={description} />
+    <meta property="article:publisher" content="https://www.facebook.com/mindbodygreen" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {authorUrl && <meta property="article:author" content={authorUrl} />}
+    {tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={twitterImage} />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:site" content="mindbodygreen" />
+    {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
+
+    <link rel="preconnect" href="https://mindbodygreen-res.cloudinary.com" />
+
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+
+    <slot name="head" />
+  </head>
+  <body class="bg-paper font-sans text-ink antialiased">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:shadow"
+    >
+      Skip to Content
+    </a>
+    <a
+      href="/accessibility"
+      target="_blank"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-16 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:shadow"
+    >
+      Accessibility Statement
+    </a>
+    <slot />
+  </body>
+</html>

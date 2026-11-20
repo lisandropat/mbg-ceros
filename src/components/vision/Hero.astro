@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import SeeMoreButton from "./SeeMoreButton.astro";
+import bg from "../../assets/vision/hero-bg.png";
+import logo from "../../assets/vision/logo-mbg-vsp.png";
+import titleLine1 from "../../assets/vision/title-line-1.png";
+import titleLine2 from "../../assets/vision/title-line-2.png";
+import tagline from "../../assets/vision/tagline.png";
+
+export interface Props {
+  next: string;
+}
+const { next } = Astro.props;
+---
+
+<section class="@container relative isolate aspect-[1395/1550] w-full overflow-hidden text-white" aria-labelledby="vision-hero-title">
+  <Image
+    src={bg}
+    alt=""
+    widths={[768, 1280, 1920, 2880]}
+    sizes="106vw"
+    loading="eager"
+    fetchpriority="high"
+    class="absolute -left-[3%] -top-[1.6cqw] -z-10 h-[calc(100%+1.6cqw)] w-[106%] max-w-none object-cover object-top"
+  />
+
+  <Image
+    src={logo}
+    alt="mindbodygreen x VSP Vision Care"
+    widths={[450, 899]}
+    sizes="31cqw"
+    data-reveal
+    class="absolute left-[34.27%] top-[14.7cqw] w-[30.75%]"
+  />
+
+  <h2 id="vision-hero-title" class="absolute left-[19.43%] top-[21.86cqw] w-[61.2%]">
+    <Image src={titleLine1} alt="a clearer look" widths={[871, 1742]} sizes="62cqw" data-reveal style="--reveal-delay: 150ms" class="block w-full" />
+    <Image src={titleLine2} alt="at healthy aging" widths={[871, 1742]} sizes="62cqw" data-reveal style="--reveal-delay: 300ms" class="-mt-[0.4%] block w-full" />
+  </h2>
+
+  <p data-reveal style="--reveal-delay: 450ms" class="absolute inset-x-0 top-[39.9cqw] text-center text-[2.007cqw] leading-[1.1]">
+    A pillar of longevity that deserves a closer look?<br />
+    Keep scrolling to bring the bigger picture into focus.
+  </p>
+
+  <p class="absolute left-1/2 top-[66.4cqw] -translate-x-1/2 whitespace-nowrap text-center text-[2.007cqw] leading-[1.07]">
+    <span data-reveal class="block"><strong class="font-bold">Healthy vision</strong> helps us…</span>
+    <span data-reveal style="--reveal-delay: 150ms" class="block">Move confidently through the world…</span>
+    <span data-reveal style="--reveal-delay: 300ms" class="block">Connect us to the people around us…</span>
+    <span data-reveal style="--reveal-delay: 450ms" class="block">And ensure we can continue doing<br />the things that matter…</span>
+  </p>
+
+  <Image
+    src={tagline}
+    alt="seeing well is living well is aging well"
+    widths={[1122, 2245]}
+    sizes="76cqw"
+    data-reveal
+    style="--reveal-delay: 200ms"
+    class="absolute left-[11.9%] top-[82cqw] w-[76.2%]"
+  />
+
+  <SeeMoreButton href={next} class="top-[94.3cqw]" />
+</section>

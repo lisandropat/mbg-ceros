@@ -1,0 +1,140 @@
+---
+import Logo from "../assets/logo-mindbodygreen.svg";
+import InstagramLogo from "@phosphor-icons/core/assets/light/instagram-logo-light.svg";
+import FacebookLogo from "@phosphor-icons/core/assets/light/facebook-logo-light.svg";
+import XLogo from "@phosphor-icons/core/assets/light/x-logo-light.svg";
+import PinterestLogo from "@phosphor-icons/core/assets/light/pinterest-logo-light.svg";
+import YoutubeLogo from "@phosphor-icons/core/assets/light/youtube-logo-light.svg";
+import TiktokLogo from "@phosphor-icons/core/assets/light/tiktok-logo-light.svg";
+
+type FooterLink = { label: string; href: string; external?: boolean };
+
+const columns: { title: string; links: FooterLink[] }[] = [
+  {
+    title: "Read",
+    links: [
+      { label: "Health", href: "/health" },
+      { label: "Food", href: "/food" },
+      { label: "Movement", href: "/movement" },
+      { label: "Lifestyle", href: "/lifestyle" },
+      { label: "Mindfulness", href: "/mindfulness" },
+      { label: "Relationships", href: "/relationships" },
+      { label: "Planet", href: "/planet" },
+    ],
+  },
+  {
+    title: "Learn",
+    links: [
+      { label: "Health Coaching+", href: "https://institute.mindbodygreen.com/health-coach-certification", external: true },
+      { label: "nutrition & longevity+", href: "https://institute.mindbodygreen.com/nutrition-longevity", external: true },
+      { label: "Peri/menopause+", href: "https://institute.mindbodygreen.com/peri-menopause", external: true },
+    ],
+  },
+  {
+    title: "Listen",
+    links: [
+      { label: "mindbodygreen podcast", href: "https://podcasts.apple.com/us/podcast/the-mindbodygreen-podcast/id1246494475", external: true },
+      { label: "clean beauty school podcast", href: "https://podcasts.apple.com/us/podcast/clean-beauty-school/id1562146692", external: true },
+    ],
+  },
+  {
+    title: "Shop",
+    links: [
+      { label: "Manage Subscriptions", href: "http://shop.mindbodygreen.com/customer_authentication/login?return_to=/a/account/shopify-login", external: true },
+      { label: "Track Orders", href: "https://account.mindbodygreen.com", external: true },
+      { label: "Take the quiz", href: "https://shop.mindbodygreen.com/pages/mindbodygreen-supplements-quiz", external: true },
+      { label: "Contact", href: "/contact" },
+      { label: "About Us", href: "/about" },
+    ],
+  },
+];
+
+const socials = [
+  { name: "Instagram", Icon: InstagramLogo, href: "https://www.instagram.com/mindbodygreen" },
+  { name: "Facebook", Icon: FacebookLogo, href: "https://www.facebook.com/mindbodygreen" },
+  { name: "Twitter", Icon: XLogo, href: "https://twitter.com/mindbodygreen" },
+  { name: "Pinterest", Icon: PinterestLogo, href: "https://www.pinterest.com/mindbodygreen" },
+  { name: "YouTube", Icon: YoutubeLogo, href: "https://www.youtube.com/mindbodygreen" },
+  { name: "TikTok", Icon: TiktokLogo, href: "https://www.tiktok.com/@mindbodygreen" },
+];
+
+const legal: FooterLink[] = [
+  { label: "Jobs", href: "/jobs" },
+  { label: "Terms of Sale", href: "/terms-of-sale" },
+  { label: "Terms of Use", href: "/terms-of-use" },
+  { label: "Disclaimer", href: "/disclaimer" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Return Policy", href: "https://help.mindbodygreen.com/your-account-start-your-return-exchange-BktbjS_Hzl", external: true },
+  { label: "Accessibility", href: "/accessibility" },
+  { label: "Ad Choices", href: "/privacy" },
+  { label: "Data Collection", href: "/data-collection" },
+  { label: "Editorial Process", href: "/editorial-process" },
+];
+
+const ext = (l: FooterLink) => (l.external ? { target: "_blank", rel: "noreferrer" } : {});
+const year = new Date().getFullYear();
+---
+
+<footer id="footer" class="overflow-hidden bg-[#2360B2] text-white">
+  <div class="flex flex-col gap-10 px-5 pt-12 md:px-10 lg:flex-row lg:justify-between lg:pl-[85px] lg:pr-[87px] lg:pt-[72px]">
+    <nav class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:gap-0" aria-label="Footer">
+      {
+        columns.map((col, i) => (
+          <div class="border-b border-white/30 sm:border-0 lg:w-[170px]" data-accordion>
+            <button
+              type="button"
+              aria-expanded="false"
+              aria-controls={`footer-col-${i}`}
+              class="flex w-full items-center justify-between py-4 text-left text-[19px] font-medium uppercase tracking-[0.12em] sm:pointer-events-none sm:py-0 sm:pb-[26px]"
+            >
+              {col.title}
+              <span class="text-2xl sm:hidden" data-icon>+</span>
+            </button>
+            <div id={`footer-col-${i}`} class="hidden flex-col gap-[14px] pb-6 sm:flex lg:pb-0" data-panel>
+              {col.links.map((link) => (
+                <a href={link.href} class="max-w-[128px] text-[13px] leading-[1.1] tracking-[0.02em] hover:underline" {...ext(link)}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </nav>
+
+    <div class="flex flex-col gap-5 lg:items-end lg:pt-1">
+      <div class="flex gap-[20px]">
+        {
+          socials.map(({ name, Icon, href }) => (
+            <a href={href} target="_blank" rel="noreferrer" aria-label={`mindbodygreen on ${name}`} class="hover:opacity-70">
+              <Icon width={30} height={30} aria-hidden="true" />
+            </a>
+          ))
+        }
+      </div>
+      <p class="text-[10px] tracking-[0.03em] lg:pr-2">© 2009 - {year} mindbodygreen LLC. All rights reserved.</p>
+    </div>
+  </div>
+
+  <div class="mt-14 flex flex-col-reverse gap-8 px-5 pb-10 md:px-10 lg:mt-[30px] lg:flex-row lg:items-start lg:justify-between lg:pb-10 lg:pr-[87px]">
+    <Logo role="img" aria-label="mindbodygreen" class="h-auto w-full max-w-[880px] text-white/40 lg:w-[64%]" />
+    <div class="flex max-w-[440px] flex-wrap gap-x-[10px] gap-y-[14px] text-[10px] tracking-[0.02em] lg:mt-[60px] lg:justify-end">
+      {legal.map((link) => <a href={link.href} class="hover:underline" {...ext(link)}>{link.label}</a>)}
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-accordion]").forEach((item) => {
+    const btn = item.querySelector("button");
+    const panel = item.querySelector<HTMLElement>("[data-panel]");
+    const icon = item.querySelector<HTMLElement>("[data-icon]");
+    btn?.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!open));
+      panel?.classList.toggle("hidden", open);
+      panel?.classList.toggle("flex", !open);
+      if (icon) icon.textContent = open ? "+" : "−";
+    });
+  });
+</script>

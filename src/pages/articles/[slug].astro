@@ -1,0 +1,56 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import VisionStory from "../../components/vision/VisionStory.astro";
+import {
+  articles,
+  articleUrl,
+  articleLd,
+  organizationLd,
+  websiteLd,
+  SITE,
+  type Article,
+} from "../../data/articles";
+
+export const getStaticPaths = (() =>
+  articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }))) satisfies GetStaticPaths;
+
+const { article } = Astro.props as { article: Article };
+
+const contentComponents = {
+  "vision-story": VisionStory,
+};
+const Content = contentComponents[article.content];
+---
+
+<BaseLayout
+  title={article.title}
+  description={article.description}
+  canonical={`${SITE}${articleUrl(article)}`}
+  image={article.image}
+  twitterImage={article.twitterImage}
+  twitterCreator={article.twitterCreator}
+  publishedTime={article.publishedTime}
+  modifiedTime={article.modifiedTime}
+  authorUrl={article.author.url}
+  tags={article.tags}
+  jsonLd={[organizationLd, websiteLd, articleLd(article)]}
+>
+  <main>
+    <SiteNav />
+
+    <article id={`article-wrapper-${article.id}`}>
+      <h1 class="sr-only">{article.title}</h1>
+      <div id="content">
+        <Content />
+      </div>
+    </article>
+
+    <SiteFooter />
+  </main>
+</BaseLayout>

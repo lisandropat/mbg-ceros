@@ -1,0 +1,57 @@
+---
+import { articleUrl, type Article } from "../data/articles";
+
+export interface Props {
+  article: Article;
+  featured?: boolean;
+}
+
+const { article, featured = false } = Astro.props;
+
+const date = new Date(article.publishedTime).toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
+---
+
+<a
+  href={articleUrl(article)}
+  class:list={[
+    "group flex flex-col gap-4",
+    featured && "md:grid md:grid-cols-2 md:items-center md:gap-10",
+  ]}
+>
+  <div class="overflow-hidden bg-muted">
+    <img
+      src={article.thumbnail}
+      alt=""
+      width="800"
+      height="600"
+      loading={featured ? "eager" : "lazy"}
+      decoding="async"
+      class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.15em]">
+      <span>{article.category}</span>
+      {article.sponsor && <span class="text-black/50">Partner · {article.sponsor}</span>}
+    </div>
+
+    <h2
+      class:list={[
+        "font-serif leading-tight group-hover:underline group-hover:underline-offset-4",
+        featured ? "text-3xl md:text-5xl" : "text-2xl",
+      ]}
+    >
+      {article.title}
+    </h2>
+
+    <p class="text-sm text-black/60">
+      By {article.author.name} · <time datetime={article.publishedTime}>{date}</time>
+    </p>
+  </div>
+</a>
