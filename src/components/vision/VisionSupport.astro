@@ -76,24 +76,24 @@ const tips = [
 ];
 ---
 
-<section class="@container relative aspect-[2576/1279] w-full overflow-hidden bg-[#F7F7F4] text-black" aria-labelledby="vision-support-title">
-  <h2 id="vision-support-title" class="absolute left-[9.32%] top-[4.35cqw] w-[35.9%]">
-    <Image src={title} alt="find the vision support you need" widths={[519, 1037]} sizes="36cqw" data-reveal class="block w-full" />
+<section class="@container relative flex w-full flex-col gap-8 overflow-hidden bg-[#F7F7F4] px-6 py-12 text-black md:block md:aspect-[2576/1279] md:p-0" aria-labelledby="vision-support-title">
+  <h2 id="vision-support-title" class="w-full max-w-[420px] md:absolute md:left-[9.32%] md:top-[4.35cqw] md:w-[35.9%] md:max-w-none">
+    <Image src={title} alt="find the vision support you need" widths={[519, 1037]} sizes="(min-width: 768px) 36vw, 90vw" data-reveal class="block w-full" />
   </h2>
 
-  <div data-reveal style="--reveal-delay: 150ms" class="absolute left-[10.33%] top-[15.2cqw] whitespace-nowrap text-[1.2cqw] leading-[1.05] [&>p+p]:mt-[1lh]">
+  <div data-reveal style="--reveal-delay: 150ms" class="text-[16px] leading-snug md:absolute md:left-[10.33%] md:top-[15.2cqw] md:whitespace-nowrap md:text-[1.2cqw] md:leading-[1.05] [&>p+p]:mt-[1lh] max-md:[&_br]:hidden">
     <p>There’s no single secret to aging well.</p>
-    <p>It’s the everyday habits that help us continue moving,<br />connecting, exploring, creating, and participating in<br />the lives we’ve built. Vision health is woven through<br />all of them.</p>
-    <p>So as you think about the health habits you want to<br />carry with you into the years ahead, make sure eye<br />care is part of the picture.</p>
+    <p>It’s the everyday habits that help us continue moving, <br />connecting, exploring, creating, and participating in <br />the lives we’ve built. Vision health is woven through <br />all of them.</p>
+    <p>So as you think about the health habits you want to <br />carry with you into the years ahead, make sure eye <br />care is part of the picture.</p>
     <p>Here’s where to start</p>
   </div>
 
-  <div data-reveal style="--reveal-delay: 300ms" class="absolute left-[10.33%] top-[33.2cqw] flex items-center gap-[1.6cqw]">
-    <Image src={chris} alt="Chris Smiley, O.D." widths={[130, 260]} sizes="9cqw" class="w-[9.08cqw] shrink-0 rounded-full" />
-    <div class="whitespace-nowrap">
-      <p class="text-[1.3cqw] leading-[1.13]">Meet our expert:<br /><strong class="font-bold">Chris Smiley, O.D.</strong></p>
-      <p class="mt-[1.2cqw] text-[1.15cqw] leading-[1.15]">
-        Chris Smiley, O.D., is the CEO of<br />Vision Professionals in Columbus,<br />OH and a <a href="https://www.vsp.com/eye-doctor" target="_blank" rel="noopener" class="underline hover:opacity-70">VSP network optometrist</a>.
+  <div data-reveal style="--reveal-delay: 300ms" class="flex items-center gap-4 md:absolute md:left-[10.33%] md:top-[33.2cqw] md:gap-[1.6cqw]">
+    <Image src={chris} alt="Chris Smiley, O.D." widths={[130, 260]} sizes="(min-width: 768px) 9vw, 88px" class="w-[88px] shrink-0 rounded-full md:w-[9.08cqw]" />
+    <div class="md:whitespace-nowrap">
+      <p class="text-[15px] leading-tight md:text-[1.3cqw] md:leading-[1.13]">Meet our expert:<br /><strong class="font-bold">Chris Smiley, O.D.</strong></p>
+      <p class="mt-2 text-[14px] leading-snug md:mt-[1.2cqw] md:text-[1.15cqw] md:leading-[1.15] max-md:[&_br]:hidden">
+        Chris Smiley, O.D., is the CEO of <br />Vision Professionals in Columbus, <br />OH and a <a href="https://www.vsp.com/eye-doctor" target="_blank" rel="noopener" class="underline hover:opacity-70">VSP network optometrist</a>.
       </p>
     </div>
   </div>
@@ -102,9 +102,9 @@ const tips = [
     href={start}
     data-reveal
     style="--reveal-delay: 450ms"
-    class="group absolute left-[10.33%] top-[44.6cqw] flex items-center gap-[0.8cqw] rounded-full bg-[#1D3345] px-[2cqw] py-[0.9cqw] text-[1.15cqw] font-medium leading-none tracking-[0.06em] text-white transition-colors hover:bg-black"
+    class="group order-last flex items-center gap-2 self-center rounded-full bg-[#1D3345] px-5 py-3 text-[13px] font-medium leading-none tracking-[0.06em] text-white transition-colors hover:bg-black md:absolute md:left-[10.33%] md:top-[44.6cqw] md:gap-[0.8cqw] md:px-[2cqw] md:py-[0.9cqw] md:text-[1.15cqw]"
   >
-    <ArrowCounterClockwise aria-hidden="true" class="w-[1.4cqw] transition-[rotate] duration-500 group-hover:-rotate-180" />
+    <ArrowCounterClockwise aria-hidden="true" class="w-4 transition-[rotate] duration-500 group-hover:-rotate-180 md:w-[1.4cqw]" />
     <span>BACK TO THE START</span>
   </a>
 
@@ -115,27 +115,27 @@ const tips = [
     role="region"
     aria-roledescription="carousel"
     aria-label="Where to start"
-    class="absolute left-[49.96%] top-[1.55cqw] h-[43.9cqw] w-[39.2cqw]"
+    class="relative w-full max-w-[520px] self-center md:absolute md:left-[49.96%] md:top-[1.55cqw] md:h-[43.9cqw] md:w-[39.2cqw] md:max-w-none"
   >
-    <div class="h-full overflow-hidden rounded-[2.4cqw] border-[max(2px,0.12cqw)] border-[#7CBFCB] bg-white">
-      <div data-track class="flex h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+    <div class="overflow-hidden rounded-[22px] border-2 border-[#7CBFCB] bg-white md:h-full md:rounded-[2.4cqw] md:border-[max(2px,0.12cqw)]">
+      <div data-track class="flex transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-full">
         {
           tips.map((tip, i) => (
             <article
-              class="flex h-full w-full shrink-0 flex-col px-[3.73cqw] pb-[3.1cqw] pt-[3cqw] text-[#1D3345]"
+              class="flex w-full shrink-0 flex-col px-6 pb-7 pt-6 text-[#1D3345] md:h-full md:px-[3.73cqw] md:pb-[3.1cqw] md:pt-[3cqw]"
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${tips.length}`}
               data-slide-item
               inert={i !== 0}
             >
-              <header class="flex items-center gap-[1.67cqw]">
-                <Image src={tip.number} alt={`#${i + 1}`} widths={[tip.number.width]} sizes="5cqw" class="h-[3.1cqw] w-auto" />
-                <h3 class="whitespace-nowrap text-[2cqw] font-bold leading-[1.04]" set:html={tip.title} />
+              <header class="flex items-center gap-4 md:gap-[1.67cqw]">
+                <Image src={tip.number} alt={`#${i + 1}`} widths={[tip.number.width]} sizes="(min-width: 768px) 5vw, 48px" class="h-9 w-auto shrink-0 md:h-[3.1cqw]" />
+                <h3 class="text-[19px] font-bold leading-tight md:whitespace-nowrap md:text-[2cqw] md:leading-[1.04] max-md:[&_br]:hidden" set:html={tip.title.replaceAll("<br />", " <br />")} />
               </header>
-              <hr class="mt-[1.5cqw] w-[31.56cqw] border-0 border-t border-[#7CBFCB]" />
+              <hr class="mt-4 w-full border-0 border-t border-[#7CBFCB] md:mt-[1.5cqw] md:w-[31.56cqw]" />
               <div
-                class="mt-[2cqw] flex-1 leading-[1.05] [&_a]:underline [&_a:hover]:opacity-70 [&_strong]:font-bold [&_sup]:text-[0.6em] [&>p+p]:mt-[1lh]"
-                style={`font-size:${tip.size}`}
+                class="mt-5 flex-1 text-[15px] leading-snug md:mt-[2cqw] md:text-(length:--fs) md:leading-[1.05] [&_a]:underline [&_a:hover]:opacity-70 [&_strong]:font-bold [&_sup]:text-[0.6em] [&>p+p]:mt-[1lh]"
+                style={`--fs:${tip.size}`}
               >
                 {tip.paragraphs.map((p) => <p set:html={p} />)}
               </div>
@@ -143,10 +143,10 @@ const tips = [
                 href={vspDoctor}
                 target="_blank"
                 rel="noopener"
-                class="group/cta mt-[1cqw] inline-flex items-center gap-[0.9cqw] self-start text-[1.22cqw] leading-none tracking-[0.08em] hover:opacity-80"
+                class="group/cta mt-6 inline-flex items-center gap-2 self-start text-[13px] leading-none tracking-[0.06em] hover:opacity-80 md:mt-[1cqw] md:gap-[0.9cqw] md:text-[1.22cqw] md:tracking-[0.08em]"
               >
-                <span class="underline decoration-[max(1px,0.06cqw)] underline-offset-[0.35cqw]">Find a VSP network doctor near you</span>
-                <ArrowRight aria-hidden="true" class="w-[1.45cqw] transition-[translate] duration-300 group-hover/cta:translate-x-[0.3cqw]" />
+                <span class="underline decoration-[max(1px,0.06cqw)] underline-offset-4 md:underline-offset-[0.35cqw]">Find a VSP network doctor near you</span>
+                <ArrowRight aria-hidden="true" class="w-4 shrink-0 transition-[translate] duration-300 group-hover/cta:translate-x-1 md:w-[1.45cqw] md:group-hover/cta:translate-x-[0.3cqw]" />
               </a>
             </article>
           ))
@@ -158,21 +158,21 @@ const tips = [
       type="button"
       data-prev
       aria-label="Previous tip"
-      class="absolute -left-[1.59cqw] top-[22.1cqw] flex h-[3.18cqw] w-[3.18cqw] -translate-y-1/2 items-center justify-center rounded-full bg-[#7CBFCB] text-white transition-transform hover:scale-105"
+      class="absolute -left-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#7CBFCB] text-white transition-transform hover:scale-105 md:-left-[1.59cqw] md:top-[22.1cqw] md:size-[3.18cqw]"
     >
-      <CaretLeft aria-hidden="true" class="w-[1.5cqw]" />
+      <CaretLeft aria-hidden="true" class="w-5 md:w-[1.5cqw]" />
     </button>
     <button
       type="button"
       data-next
       aria-label="Next tip"
-      class="absolute -right-[1.59cqw] top-[22.1cqw] flex h-[3.18cqw] w-[3.18cqw] -translate-y-1/2 items-center justify-center rounded-full bg-[#7CBFCB] text-white transition-transform hover:scale-105"
+      class="absolute -right-5 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-[#7CBFCB] text-white transition-transform hover:scale-105 md:-right-[1.59cqw] md:top-[22.1cqw] md:size-[3.18cqw]"
     >
-      <CaretRight aria-hidden="true" class="w-[1.5cqw]" />
+      <CaretRight aria-hidden="true" class="w-5 md:w-[1.5cqw]" />
     </button>
   </div>
 
-  <p class="absolute left-[49.96%] top-[46.9cqw] w-[39.2cqw] text-center text-[max(9px,0.78cqw)]">
+  <p class="-mt-4 text-center text-[10px] md:absolute md:left-[49.96%] md:top-[46.9cqw] md:mt-0 md:w-[39.2cqw] md:text-[max(9px,0.78cqw)]">
     Citations: 1) <a
       href="https://www.aoa.org/AOA/Documents/Healthy%20Eyes/Eye%20and%20vision%20conditions/Systemic%20Conditions%20with%20Ocular%20and%20Visual%20Manifestations.pdf"
       target="_blank"
@@ -194,6 +194,12 @@ const tips = [
     };
     carousel.querySelector("[data-prev]")?.addEventListener("click", () => go(index - 1));
     carousel.querySelector("[data-next]")?.addEventListener("click", () => go(index + 1));
+    let startX = 0;
+    carousel.addEventListener("touchstart", (event) => (startX = event.touches[0].clientX), { passive: true });
+    carousel.addEventListener("touchend", (event) => {
+      const delta = event.changedTouches[0].clientX - startX;
+      if (Math.abs(delta) > 50) go(index + (delta < 0 ? 1 : -1));
+    });
     carousel.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") go(index - 1);
       if (event.key === "ArrowRight") go(index + 1);

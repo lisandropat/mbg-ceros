@@ -1,0 +1,22 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+export interface Props {
+  src: ImageMetadata;
+  half: "top" | "bottom";
+}
+const { src, half } = Astro.props;
+---
+
+<Image
+  src={src}
+  alt=""
+  widths={[1280, 1920, src.width]}
+  sizes="420vw"
+  loading="lazy"
+  class:list={[
+    "absolute inset-x-0 -z-10 h-[200svh] w-full max-w-none object-cover md:hidden",
+    half === "top" ? "top-0 object-top" : "top-[-100svh] object-bottom [mask-image:linear-gradient(to_bottom,black_88%,transparent)]",
+  ]}
+/>

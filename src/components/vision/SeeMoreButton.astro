@@ -3,22 +3,22 @@ import ArrowRight from "@phosphor-icons/core/assets/regular/arrow-right.svg";
 
 export interface Props {
   href: string;
+  top: string;
   class?: string;
-  style?: string;
   delay?: string;
 }
-const { href, class: className, style = "", delay = "350ms" } = Astro.props;
+const { href, top, class: className, delay = "350ms" } = Astro.props;
 ---
 
 <a
   href={href}
   data-reveal
-  style={`--reveal-delay: ${delay}; ${style}`}
+  style={`--reveal-delay: ${delay}; --see-more-top: ${top}`}
   class:list={[
-    "group absolute left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-[1cqw] rounded-full bg-white px-[2.6cqw] py-[1.1cqw] text-[1.75cqw] font-medium leading-none tracking-[0.06em] text-black mix-blend-screen",
+    "group flex items-center gap-2 self-center rounded-full bg-white px-6 py-3 text-[15px] font-medium leading-none tracking-[0.06em] text-black mix-blend-screen md:absolute md:left-1/2 md:top-(--see-more-top) md:-translate-x-1/2 md:-translate-y-1/2 md:gap-[1cqw] md:px-[2.6cqw] md:py-[1.1cqw] md:text-[1.75cqw]",
     className,
   ]}
 >
   <span>SEE MORE</span>
-  <ArrowRight aria-hidden="true" class="w-[2cqw] transition-[translate] duration-300 group-hover:translate-x-[0.4cqw]" />
+  <ArrowRight aria-hidden="true" class="w-[18px] transition-[translate] duration-300 group-hover:translate-x-1 md:w-[2cqw] md:group-hover:translate-x-[0.4cqw]" />
 </a>

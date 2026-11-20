@@ -6,6 +6,8 @@ import XLogo from "@phosphor-icons/core/assets/light/x-logo-light.svg";
 import PinterestLogo from "@phosphor-icons/core/assets/light/pinterest-logo-light.svg";
 import YoutubeLogo from "@phosphor-icons/core/assets/light/youtube-logo-light.svg";
 import TiktokLogo from "@phosphor-icons/core/assets/light/tiktok-logo-light.svg";
+import Plus from "@phosphor-icons/core/assets/regular/plus.svg";
+import Minus from "@phosphor-icons/core/assets/regular/minus.svg";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
@@ -76,21 +78,22 @@ const year = new Date().getFullYear();
 ---
 
 <footer id="footer" class="overflow-hidden bg-[#2360B2] text-white">
-  <div class="flex flex-col gap-10 px-5 pt-12 md:px-10 lg:flex-row lg:justify-between lg:pl-[85px] lg:pr-[87px] lg:pt-[72px]">
-    <nav class="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:gap-0" aria-label="Footer">
+  <div class="flex flex-col px-[31px] pt-[30px] lg:flex-row lg:justify-between lg:gap-10 lg:pl-[85px] lg:pr-[87px] lg:pt-[72px]">
+    <nav class="border-t border-white/80 lg:flex lg:border-0" aria-label="Footer">
       {
         columns.map((col, i) => (
-          <div class="border-b border-white/30 sm:border-0 lg:w-[170px]" data-accordion>
+          <div class="border-b border-white/80 lg:w-[170px] lg:border-0" data-accordion>
             <button
               type="button"
               aria-expanded="false"
               aria-controls={`footer-col-${i}`}
-              class="flex w-full items-center justify-between py-4 text-left text-[19px] font-medium uppercase tracking-[0.12em] sm:pointer-events-none sm:py-0 sm:pb-[26px]"
+              class="flex h-10 w-full items-center justify-between text-left text-[13px] font-medium uppercase tracking-[0.12em] lg:pointer-events-none lg:h-auto lg:pb-[26px] lg:text-[19px]"
             >
               {col.title}
-              <span class="text-2xl sm:hidden" data-icon>+</span>
+              <Plus aria-hidden="true" class="size-[15px] lg:hidden" data-icon-closed />
+              <Minus aria-hidden="true" class="hidden size-[15px] lg:hidden" data-icon-open />
             </button>
-            <div id={`footer-col-${i}`} class="hidden flex-col gap-[14px] pb-6 sm:flex lg:pb-0" data-panel>
+            <div id={`footer-col-${i}`} class="hidden flex-col gap-[14px] pb-5 lg:flex lg:pb-0" data-panel>
               {col.links.map((link) => (
                 <a href={link.href} class="max-w-[128px] text-[13px] leading-[1.1] tracking-[0.02em] hover:underline" {...ext(link)}>
                   {link.label}
@@ -102,23 +105,26 @@ const year = new Date().getFullYear();
       }
     </nav>
 
-    <div class="flex flex-col gap-5 lg:items-end lg:pt-1">
-      <div class="flex gap-[20px]">
+    <div class="mt-[43px] flex flex-col items-center gap-[22px] lg:mt-0 lg:items-end lg:gap-5 lg:pt-1">
+      <div class="flex w-full max-w-[460px] justify-between lg:w-auto lg:max-w-none lg:justify-start lg:gap-[20px]">
         {
           socials.map(({ name, Icon, href }) => (
             <a href={href} target="_blank" rel="noreferrer" aria-label={`mindbodygreen on ${name}`} class="hover:opacity-70">
-              <Icon width={30} height={30} aria-hidden="true" />
+              <Icon aria-hidden="true" class="size-[25px] lg:size-[30px]" />
             </a>
           ))
         }
       </div>
-      <p class="text-[10px] tracking-[0.03em] lg:pr-2">© 2009 - {year} mindbodygreen LLC. All rights reserved.</p>
+      <p class="text-center text-[10px] tracking-[0.03em] lg:pr-2 lg:text-left">© 2009 - {year} mindbodygreen LLC. All rights reserved.</p>
     </div>
   </div>
 
-  <div class="mt-14 flex flex-col-reverse gap-8 px-5 pb-10 md:px-10 lg:mt-[30px] lg:flex-row lg:items-start lg:justify-between lg:pb-10 lg:pr-[87px]">
-    <Logo role="img" aria-label="mindbodygreen" class="h-auto w-full max-w-[880px] text-white/40 lg:w-[64%]" />
-    <div class="flex max-w-[440px] flex-wrap gap-x-[10px] gap-y-[14px] text-[10px] tracking-[0.02em] lg:mt-[60px] lg:justify-end">
+  <div class="flex flex-col px-[21px] pb-6 pt-9 lg:mt-[30px] lg:flex-row lg:items-start lg:justify-between lg:gap-8 lg:px-10 lg:pb-10 lg:pr-[87px] lg:pt-0">
+    <Logo role="img" aria-label="mindbodygreen" class="hidden h-auto w-full max-w-[880px] text-white/40 lg:block lg:w-[64%]" />
+    <p class="border border-white px-[21px] py-[14px] text-[10px] leading-[1.1] tracking-[0.02em] lg:hidden">
+      *These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-x-[10px] gap-y-[15px] text-[10px] tracking-[0.02em] lg:mt-[60px] lg:max-w-[440px] lg:justify-end lg:gap-y-[14px]">
       {legal.map((link) => <a href={link.href} class="hover:underline" {...ext(link)}>{link.label}</a>)}
     </div>
   </div>
@@ -128,13 +134,15 @@ const year = new Date().getFullYear();
   document.querySelectorAll<HTMLElement>("[data-accordion]").forEach((item) => {
     const btn = item.querySelector("button");
     const panel = item.querySelector<HTMLElement>("[data-panel]");
-    const icon = item.querySelector<HTMLElement>("[data-icon]");
+    const closedIcon = item.querySelector("[data-icon-closed]");
+    const openIcon = item.querySelector("[data-icon-open]");
     btn?.addEventListener("click", () => {
-      const open = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!open));
-      panel?.classList.toggle("hidden", open);
-      panel?.classList.toggle("flex", !open);
-      if (icon) icon.textContent = open ? "+" : "−";
+      const open = btn.getAttribute("aria-expanded") !== "true";
+      btn.setAttribute("aria-expanded", String(open));
+      panel?.classList.toggle("hidden", !open);
+      panel?.classList.toggle("flex", open);
+      closedIcon?.classList.toggle("hidden", open);
+      openIcon?.classList.toggle("hidden", !open);
     });
   });
 </script>
