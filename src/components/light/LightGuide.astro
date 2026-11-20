@@ -1,0 +1,414 @@
+---
+import "@fontsource/instrument-serif/400-italic.css";
+import { Image } from "astro:assets";
+import ArrowRight from "@phosphor-icons/core/assets/light/arrow-right-light.svg";
+import ArrowLeft from "@phosphor-icons/core/assets/light/arrow-left-light.svg";
+import logo from "../../assets/light/logo-mbg-sunlighten.png";
+import titleLetThere from "../../assets/light/title-let-there-be-light.png";
+import titleFindYour from "../../assets/light/title-find-your-light.png";
+import glow from "../../assets/light/glow.png";
+import glowSalmon from "../../assets/light/glow-salmon.png";
+import productMask from "../../assets/light/product-mask.png";
+import productSauna from "../../assets/light/product-sauna.png";
+import productPanel from "../../assets/light/product-panel.png";
+
+const panels = [
+  {
+    id: "infrared",
+    title: "Infrared",
+    body: "That gentle warming you feel when the sun comes peeking out behind the clouds? That’s infrared. Not visible to the human eye, these wavelengths are typically experienced as heat.",
+    mythLabel: "MYTH",
+    columns: [
+      {
+        title: "Far infrared light | 9.4 microns",
+        body: "These long wavelengths penetrate deep into the body, where they interact with water molecules in the cells to generate radiant heat. By directly warming the tissues, they raise core body temperature, induce sweating, support circulation, and relax muscles.",
+        myth: "Full-spectrum saunas are the best",
+        fact: "Most “full-spectrum” saunas blend wavelengths into an undifferentiated output. Sunlighten uses PulseIQ™ to deliver them separately for optimal absorption.",
+      },
+      {
+        title: "Mid infrared light | 6.7 microns",
+        body: "Mid infrared is absorbed by soft tissues and may help muscle recovery with gentle heating effects that stimulate circulation and comfort. MIR is linked to reduced stiffness and improved mobility after physical exercise.",
+      },
+      {
+        title: "Near infrared light | ≈880 nm",
+        body: "This reaches deeper skin layers and certain soft tissues. NIR is absorbed by receptors in the mitochondria, the powerhouses of your cells, helping to support energy production, reduce oxidative stress, and overall cellular function.",
+        myth: "If you can’t feel it, it’s not working",
+        fact: "Near infrared operates beneath the surface, often without a noticeable sensation.",
+      },
+    ],
+  },
+  {
+    id: "visible",
+    title: "Visible",
+    body: "Unlike infrared, visible light is what your eyes can detect—and these wavelengths primarily interact with the surface to mid-level layers of the skin.",
+    mythLabel: "Myth",
+    columns: [
+      {
+        title: "Red light | ≈650 nm",
+        body: "One of the most studied wavelengths in skincare, red light supports collagen production and improves the skin’s natural repair pathways—thereby helping improve overall skin tone and texture.",
+        myth: "All red light devices are the same",
+        fact: "Wavelength accuracy, power output (irradiance), and device design all influence results.",
+      },
+      {
+        title: "Yellow light | ≈590 nm",
+        body: "Yellow light is used in skincare to help improve redness and wrinkles caused by sun exposure. Studies suggest it has an anti-inflammatory effect, helping to promote a firmer, balanced complexion.",
+      },
+      {
+        title: "Green light | ≈520 nm",
+        body: "Green light inspires relaxation, helping to reduce stress and promote a calmer internal state. It’s being studied for its effects on pigmentation and may support improved overall skin quality over time.",
+      },
+      {
+        title: "Blue light | ≈415 nm",
+        body: "Blue light is commonly used in acne-focused treatments, making it a useful wavelength for breakout-prone complexions. It helps support clearer-looking skin when used in controlled, consistent sessions.",
+        myth: "Blue light is bad for the skin",
+        fact: "Precise blue light can reduce acne-causing bacteria. Uncontrolled, excessive blue light, like from screens, can contribute to oxidative stress.",
+      },
+    ],
+  },
+];
+
+const products = [
+  {
+    image: productMask,
+    alt: "Sunlighten RED Light Therapy Mask on a side table",
+    name: "Sunlighten RED Light Therapy Mask",
+    body: "Designed for real-life consistency, this multi-wavelength LED mask delivers red light, near-infrared, and additional light therapies to support collagen production, promote healthier-looking skin, and fit seamlessly into your routine. With 416 medical-grade LEDs, thoughtful ergonomics, and quick 3–8 minute sessions, it makes self-care feel effortless. Use it regularly for smoother, more luminous skin.",
+  },
+  {
+    image: productSauna,
+    alt: "Woman relaxing inside a Sunlighten mPulse sauna",
+    name: "Sunlighten mPulse® Intelligent Sauna featuring PulseIQ™",
+    body: "The mPulse is the only sauna using PulseIQ™, a patented infrared intelligence platform that can deliver four independent wavelengths — red light, NIR, MIR, and FIR — at the highest quality and quantity for precise absorption. With customizable sessions and six programs based on clinical research and real user data, the mPulse supports circulation, recovery, detoxification, and relaxation. It’s a deeply immersive experience that redefines what saunas can do.",
+  },
+  {
+    image: productPanel,
+    alt: "Two people stretching next to a Sunlighten RED Light Therapy Panel",
+    name: "Sunlighten RED Light Therapy Panel",
+    body: "Built for whole-body wellness, this high-performance panel delivers targeted red and near-infrared light across larger areas of the body. It offers 20+ scientifically optimized wellness programs and a rich, app-guided experience that optimizes distance, time, and position. Supporting muscle recovery, skin care, energy, sleep, and more, it’s designed for customizable, at-home use—bringing powerful output into a streamlined format you can tailor to your needs.",
+  },
+];
+
+const quizSteps = [
+  { number: "01", question: "I want to feel", options: ["Radiant", "Strong", "Calm"] },
+  { number: "02", question: "Lorem ipsum dolor", options: ["Lorem", "Ipsum", "Dolor"] },
+];
+
+const quizResult = {
+  title: "Lorem Ipsum<br />Dolor",
+  why: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  link: "Lorem ipsum dolor sit amet:",
+  linkNote: "consectetur adipiscing",
+  image: "https://picsum.photos/seed/sunlighten-quiz/720/1052",
+};
+
+const step = "col-start-1 row-start-1 transition-[opacity,translate,visibility] duration-500";
+const stepHidden = "invisible pointer-events-none translate-y-4 opacity-0";
+
+const pill =
+  "inline-flex items-center justify-center rounded-full border border-[#641C2C] px-6 py-1.5 font-serif-italic text-[17px] leading-none transition-colors hover:bg-[#641C2C] hover:text-white md:h-[2.1cqw] md:w-[9.9cqw] md:p-0 md:text-[1.2cqw]";
+---
+
+<div class="@container relative isolate overflow-hidden bg-[#F6E1E3] text-[#641C2C] [font-family:'Helvetica_Neue',Helvetica,Arial,sans-serif]" data-light-guide>
+  <Image
+    src={glow}
+    alt=""
+    widths={[1280, 2560]}
+    sizes="190vw"
+    loading="eager"
+    data-first-image
+    class="pointer-events-none absolute left-1/2 top-[-55vw] -z-10 w-[260%] max-w-none -translate-x-1/2 brightness-[0.87] md:top-[-30cqw] md:w-[205%]"
+  />
+
+  <section class="flex flex-col items-center gap-10 px-5 pb-24 pt-16 md:gap-0 md:px-0 md:pb-[17cqw] md:pt-[8.3cqw]" aria-labelledby="light-title">
+    <Image src={logo} alt="mindbodygreen x Sunlighten" widths={[367, 734]} sizes="(min-width: 768px) 26vw, 70vw" data-reveal class="w-[70%] max-w-[300px] md:w-[25.6cqw] md:max-w-none" />
+    <h2 id="light-title" class="w-full md:mt-[11.6cqw] md:w-[88.9cqw]">
+      <Image src={titleLetThere} alt="let there be light" widths={[1254, 2508]} sizes="(min-width: 768px) 89vw, 92vw" data-reveal style="--reveal-delay: 150ms" class="block w-full" />
+    </h2>
+  </section>
+
+  <section class="relative mx-4 rounded-t-[32px] border-2 border-b-0 border-[#641C2C] bg-linear-to-b from-[#F6D9DB] to-[#F8E5E7] px-6 pb-20 pt-9 md:mx-[3.3cqw] md:rounded-t-[7cqw] md:border-[max(1.5px,0.08cqw)] md:px-[6.8cqw] md:pb-[11cqw] md:pt-[5.1cqw]" aria-labelledby="spectrum-title">
+    <div class="flex flex-col gap-6 md:grid md:grid-cols-[27.05cqw_1fr] md:gap-0">
+      <h2 id="spectrum-title" data-reveal class="text-[44px] font-medium leading-[0.98] tracking-[-0.02em] md:text-[4.6cqw]">
+        the light<br />spectrum<br /><span class="font-serif-italic text-[1.08em] font-normal tracking-normal">explained</span>
+      </h2>
+      <div data-reveal style="--reveal-delay: 150ms" class="md:max-w-[43.6cqw]">
+        <p class="text-[19px] font-bold leading-tight md:text-[2cqw]">All the light you can (and cannot) see</p>
+        <p class="mt-4 text-[18px] font-medium leading-snug md:mt-[2.5cqw] md:text-[2.17cqw] md:leading-[1.17]">
+          Not all light behaves the same. There’s a whole spectrum. By delivering specific wavelengths of light energy, we can target different depths and biological responses in the body.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="relative z-10 -mt-12 scroll-mt-28 overflow-hidden transition-[height] duration-500 md:-mt-[8cqw] md:scroll-mt-24" data-panels>
+    <div data-track class="flex items-start transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] md:items-stretch">
+      {
+        panels.map((panel, p) => {
+          const isFirst = p === 0;
+          return (
+            <section
+              id={`light-${panel.id}`}
+              data-panel
+              inert={!isFirst}
+              aria-labelledby={`${panel.id}-title`}
+              class="w-full shrink-0 px-4 md:px-0"
+            >
+              <div
+                class:list={[
+                  "relative h-full rounded-[32px] border-2 border-[#641C2C] bg-white px-6 pb-12 pt-9 md:border-[max(1.5px,0.08cqw)] md:pb-[6.3cqw] md:pt-[5.5cqw]",
+                  isFirst
+                    ? "md:ml-[3.3cqw] md:rounded-l-[7cqw] md:rounded-r-none md:border-r-0 md:pl-[6.8cqw] md:pr-0"
+                    : "md:mr-[3.3cqw] md:rounded-l-none md:rounded-r-[7cqw] md:border-l-0 md:pl-[9.9cqw] md:pr-0",
+                ]}
+              >
+                <div class="flex flex-col gap-5 md:block">
+                  {!isFirst && (
+                    <button
+                      type="button"
+                      data-go="0"
+                      aria-label="Back to Infrared"
+                      class="self-start transition-[translate] duration-300 hover:-translate-x-1 md:absolute md:left-[3.3cqw] md:top-[7.1cqw]"
+                    >
+                      <ArrowLeft aria-hidden="true" class="w-9 md:w-[2.8cqw]" />
+                    </button>
+                  )}
+                  <h3 id={`${panel.id}-title`} tabindex="-1" data-reveal class="text-[44px] font-medium leading-none tracking-[-0.02em] outline-none md:text-[4.3cqw]">
+                    {panel.title}
+                  </h3>
+                  <p
+                    data-reveal
+                    style="--reveal-delay: 150ms"
+                    class:list={[
+                      "text-[18px] font-medium leading-snug md:mt-[2.6cqw] md:text-[2.33cqw] md:leading-[1.08]",
+                      isFirst ? "md:max-w-[44.5cqw]" : "md:max-w-[47.5cqw]",
+                    ]}
+                  >
+                    {panel.body}
+                  </p>
+                  {isFirst && (
+                    <button
+                      type="button"
+                      data-go="1"
+                      data-reveal
+                      style="--reveal-delay: 300ms"
+                      class="group flex items-center gap-4 self-start text-left text-[20px] font-bold leading-[1.1] md:absolute md:left-[60.7cqw] md:top-[5.6cqw] md:gap-[1.4cqw] md:text-[2.2cqw]"
+                    >
+                      <span>Learn about<br />Visible Light</span>
+                      <ArrowRight aria-hidden="true" class="w-9 transition-[translate] duration-300 group-hover:translate-x-1 md:w-[2.8cqw]" />
+                    </button>
+                  )}
+                </div>
+
+                <div
+                  class:list={[
+                    "mt-10 flex flex-col gap-10 md:mt-[4.6cqw] md:grid md:grid-rows-[auto_auto_auto_auto] md:gap-0",
+                    isFirst ? "md:grid-cols-[27.05cqw_27.05cqw_1fr]" : "md:grid-cols-[repeat(4,20.1cqw)]",
+                  ]}
+                >
+                  {panel.columns.map((item, i) => {
+                    const last = i === panel.columns.length - 1;
+                    return (
+                      <article data-reveal style={`--reveal-delay: ${i * 120}ms`} class="flex flex-col md:row-span-4 md:grid md:grid-rows-subgrid">
+                        <div class="relative flex items-center" aria-hidden="true">
+                          {!isFirst && i === 0 && <span class="absolute right-full hidden h-[max(1.5px,0.12cqw)] w-[9.9cqw] bg-[#641C2C] md:block" />}
+                          <span class="size-6 shrink-0 rounded-full bg-[#641C2C] md:size-[2.1cqw]" />
+                          <span class:list={["h-[2px] flex-1 bg-[#641C2C] md:h-[max(1.5px,0.12cqw)]", !isFirst && last && "md:invisible"]} />
+                        </div>
+                        <h4 class="mt-5 text-[21px] font-medium leading-tight tracking-[-0.01em] md:mt-[2.9cqw] md:whitespace-nowrap md:text-[1.8cqw]">{item.title}</h4>
+                        <p class:list={["mt-3 text-[15px] font-medium leading-snug md:mt-[1.4cqw] md:text-[1.02cqw] md:leading-[1.1]", isFirst ? "md:max-w-[23.8cqw]" : "md:max-w-[17.4cqw]"]}>
+                          {item.body}
+                        </p>
+                        {item.myth && (
+                          <div
+                            data-myth
+                            class:list={[
+                              "mt-6 grid border-y border-[#641C2C] md:mt-[2.3cqw] md:min-h-[8cqw]",
+                              isFirst ? "md:w-[23.8cqw]" : "md:w-[18.05cqw]",
+                            ]}
+                          >
+                            <div data-myth-front class="col-start-1 row-start-1 flex flex-col pb-2 pt-4 transition-opacity duration-300 md:pb-[0.55cqw] md:pt-[1.35cqw]">
+                              <p class="text-[16px] font-medium leading-snug md:text-[1.3cqw] md:leading-[1.12]">{panel.mythLabel}: {item.myth}</p>
+                              <button type="button" data-reveal-fact class:list={[pill, "mt-8 self-start md:mt-auto"]}>
+                                click to reveal fact
+                              </button>
+                            </div>
+                            <p
+                              data-myth-fact
+                              tabindex="-1"
+                              class="invisible col-start-1 row-start-1 pb-4 pt-4 text-[16px] font-medium leading-snug opacity-0 outline-none transition-opacity duration-500 md:pb-[0.8cqw] md:pt-[1.35cqw] md:text-[1.3cqw] md:leading-[1.12]"
+                            >
+                              Fact: {item.fact}
+                            </p>
+                          </div>
+                        )}
+                      </article>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <section class="relative isolate px-5 pb-16 pt-20 md:px-0 md:pb-[6cqw] md:pt-[22cqw]" aria-labelledby="find-light-title">
+    <div data-quiz class="relative grid items-center md:min-h-[50cqw]">
+      <Image
+        src={glowSalmon}
+        alt=""
+        widths={[1280, 2560]}
+        sizes="300vw"
+        class="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[320%] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[150cqw]"
+      />
+
+      <div data-step class:list={[step, "flex flex-col items-center"]}>
+        <h2 id="find-light-title" tabindex="-1" class="w-full outline-none md:w-[88.8cqw]">
+          <Image src={titleFindYour} alt="find your light" widths={[1252, 2504]} sizes="(min-width: 768px) 89vw, 92vw" data-reveal class="block w-full" />
+        </h2>
+        <p data-reveal style="--reveal-delay: 150ms" class="mt-3 text-center text-[22px] font-bold leading-tight tracking-[-0.01em] md:mt-[0.6cqw] md:text-[3.1cqw]">
+          your light therapy routine builder
+        </p>
+        <button
+          type="button"
+          data-quiz-next
+          data-reveal
+          style="--reveal-delay: 300ms"
+          class="mt-8 flex items-center justify-center rounded-full bg-white px-12 py-4 text-[17px] font-bold tracking-[-0.01em] text-[#A0202A] transition-transform hover:scale-[1.03] md:mt-[3.9cqw] md:h-[6.9cqw] md:w-[24.5cqw] md:p-0 md:text-[2cqw]"
+        >
+          TAKE THE QUIZ
+        </button>
+      </div>
+
+      {
+        quizSteps.map((item) => (
+          <div data-step inert class:list={[step, stepHidden, "flex flex-col gap-8 md:flex-row md:items-start md:gap-0 md:pl-[21.9cqw]"]}>
+            <div class="md:w-[27.2cqw] md:pt-[1.1cqw]">
+              <p class="text-[24px] font-medium leading-none md:text-[2.3cqw]">{item.number}</p>
+              <h3 tabindex="-1" class="mt-6 font-serif-italic text-[44px] leading-none outline-none md:mt-[5.6cqw] md:text-[4.6cqw]">{item.question}</h3>
+            </div>
+            <div class="flex flex-col gap-3 md:w-[24.5cqw] md:gap-[1.5cqw]">
+              {item.options.map((option) => (
+                <button
+                  type="button"
+                  data-quiz-next
+                  class="flex items-center justify-center rounded-full bg-white py-4 text-[18px] font-bold tracking-[-0.01em] text-[#A0202A] transition-[scale,background-color,color] hover:scale-[1.03] focus-visible:bg-[#A0202A] focus-visible:text-white md:h-[6.9cqw] md:py-0 md:text-[2cqw]"
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <div data-step inert class:list={[step, stepHidden, "flex flex-col gap-8 md:flex-row md:items-start md:gap-[4.4cqw] md:pl-[21.9cqw]"]}>
+        <div class="md:w-[29.8cqw]">
+          <p class="text-[22px] font-medium uppercase leading-none tracking-[-0.01em] md:text-[2.4cqw]">Your match</p>
+          <h3 tabindex="-1" class="mt-4 text-[44px] font-medium leading-none tracking-[-0.02em] outline-none md:mt-[2.3cqw] md:text-[4.3cqw] md:leading-[1.02]" set:html={quizResult.title} />
+          <p class="mt-6 text-[18px] font-medium leading-snug md:mt-[3.1cqw] md:text-[2.2cqw] md:leading-[1.08]">
+            <strong class="font-bold">Why it works</strong>: {quizResult.why}
+          </p>
+          <p class="mt-5 text-[18px] font-medium leading-snug md:mt-[2.5cqw] md:text-[2.2cqw] md:leading-[1.08]">
+            <strong class="font-bold">Try</strong>: <a href="#" class="underline underline-offset-4 hover:opacity-70">{quizResult.link}</a>{" "}{quizResult.linkNote}
+          </p>
+        </div>
+        <img
+          src={quizResult.image}
+          alt="Placeholder stock photo"
+          width="720"
+          height="1052"
+          loading="lazy"
+          class="aspect-[715/1047] w-full max-w-[360px] rounded-[20px] bg-[#E39B8C] object-cover md:w-[27.75cqw] md:max-w-none md:rounded-[2.3cqw]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="relative z-10 mx-4 mb-14 rounded-[32px] border-2 border-[#641C2C] bg-white px-6 pb-10 pt-9 md:mx-[3.3cqw] md:mb-[6cqw] md:rounded-[7cqw] md:border-[max(1.5px,0.08cqw)] md:px-[6.8cqw] md:pb-[3.5cqw] md:pt-[5cqw]" aria-labelledby="workers-title">
+    <div class="flex flex-col gap-6 md:grid md:grid-cols-[26.85cqw_1fr] md:gap-0">
+      <h2 id="workers-title" data-reveal class="text-[44px] font-medium leading-[0.98] tracking-[-0.02em] md:text-[4.6cqw]">
+        the light<br /><span class="font-serif-italic text-[1.08em] font-normal tracking-normal">workers</span>
+      </h2>
+      <p data-reveal style="--reveal-delay: 150ms" class="text-[18px] font-medium leading-snug md:max-w-[46cqw] md:text-[2.17cqw] md:leading-[1.16]">
+        As the leading experts in light-based wellness for more than 25 years, Sunlighten has shaped how we understand and use these tools today. If you want results you can trust—and a routine that actually works—you’re in the right place.
+      </p>
+    </div>
+
+    <div class="mt-10 flex flex-col gap-12 md:mt-[4.8cqw] md:grid md:grid-cols-[repeat(3,26.9cqw)] md:gap-0">
+      {
+        products.map((product, i) => (
+          <article data-reveal style={`--reveal-delay: ${i * 120}ms`} class="flex flex-col md:w-[23.45cqw]">
+            <Image src={product.image} alt={product.alt} widths={[product.image.width / 2, product.image.width]} sizes="(min-width: 768px) 24vw, 90vw" class="block w-full" />
+            <h3 class="mt-4 text-[22px] font-medium leading-tight tracking-[-0.01em] md:mt-[1.25cqw] md:text-[2cqw] md:leading-[1.12]">{product.name}</h3>
+            <p class="mt-2 text-[15px] font-medium leading-snug md:mb-[2.2cqw] md:mt-[0.5cqw] md:text-[1.17cqw] md:leading-[1.15]">{product.body}</p>
+            <a href="#" class:list={[pill, "mt-6 self-start md:mt-auto"]}>
+              shop now
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</div>
+
+<script>
+  import { startReveal } from "../../lib/reveal";
+
+  document.querySelectorAll<HTMLElement>("[data-panels]").forEach((wrapper) => {
+    const track = wrapper.querySelector<HTMLElement>("[data-track]")!;
+    const panels = [...wrapper.querySelectorAll<HTMLElement>("[data-panel]")];
+    let active = 0;
+
+    const fit = () => (wrapper.style.height = `${panels[active].offsetHeight}px`);
+
+    const go = (index: number) => {
+      active = index;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      panels.forEach((panel, i) => (panel.inert = i !== index));
+      fit();
+      if (wrapper.getBoundingClientRect().top < 0) wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+      wrapper.querySelectorAll("[data-reveal]").forEach((el) => el.classList.add("is-revealed"));
+      setTimeout(() => panels[index].querySelector<HTMLElement>("h3")?.focus({ preventScroll: true }), 700);
+    };
+
+    wrapper.querySelectorAll<HTMLElement>("[data-go]").forEach((button) =>
+      button.addEventListener("click", () => go(Number(button.dataset.go))),
+    );
+
+    new ResizeObserver(fit).observe(panels[0]);
+    new ResizeObserver(fit).observe(panels[1]);
+    fit();
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-quiz]").forEach((quiz) => {
+    const steps = [...quiz.querySelectorAll<HTMLElement>("[data-step]")];
+    const hidden = ["invisible", "pointer-events-none", "translate-y-4", "opacity-0"];
+    let current = 0;
+    quiz.querySelectorAll<HTMLElement>("[data-quiz-next]").forEach((button) =>
+      button.addEventListener("click", () => {
+        if (current >= steps.length - 1) return;
+        current += 1;
+        steps.forEach((el, i) => {
+          hidden.forEach((c) => el.classList.toggle(c, i !== current));
+          el.inert = i !== current;
+        });
+        const heading = steps[current].querySelector<HTMLElement>("h2, h3");
+        setTimeout(() => heading?.focus({ preventScroll: true }), 50);
+      }),
+    );
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-myth]").forEach((block) => {
+    const front = block.querySelector<HTMLElement>("[data-myth-front]")!;
+    const fact = block.querySelector<HTMLElement>("[data-myth-fact]")!;
+    block.querySelector("[data-reveal-fact]")?.addEventListener("click", () => {
+      front.classList.add("invisible", "opacity-0");
+      fact.classList.remove("invisible", "opacity-0");
+      fact.focus({ preventScroll: true });
+    });
+  });
+
+  startReveal(document.querySelector<HTMLImageElement>("[data-light-guide] [data-first-image]"));
+</script>

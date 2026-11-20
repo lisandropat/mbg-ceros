@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import VisionStory from "../../components/vision/VisionStory.astro";
+import LightGuide from "../../components/light/LightGuide.astro";
 import {
   articles,
   articleUrl,
@@ -24,6 +25,7 @@ const { article } = Astro.props as { article: Article };
 
 const contentComponents = {
   "vision-story": VisionStory,
+  "light-guide": LightGuide,
 };
 const Content = contentComponents[article.content];
 ---

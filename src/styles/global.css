@@ -77,3 +77,8 @@ html {
 .slide-enter {
   animation: slide-enter 0.6s ease-out;
 }
+
+@utility font-serif-italic {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+}

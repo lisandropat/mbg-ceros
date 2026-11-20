@@ -17,10 +17,11 @@ export interface Article {
   ldImage?: string;
   twitterCreator?: string;
   author: { name: string; url: string; image?: string };
-  content: "vision-story";
+  content: "vision-story" | "light-guide";
 }
 
 const IMG = "org/1790104428970_a2ptbyetg4.png";
+const LIGHT_IMG = "org/1778518491691_1459wm8hntj.png";
 
 export const articles: Article[] = [
   {
@@ -45,6 +46,24 @@ export const articles: Article[] = [
         "https://mindbodygreen-res.cloudinary.com/images/c_fill,w_250,h_250,g_face:center,q_85,fl_lossy,f_jpg/usr/UM6yIV5/Alexandra B. Engler.jpg",
     },
     content: "vision-story",
+  },
+  {
+    id: 69190,
+    slug: "your-personalized-guide-to-red-and-infrared-light-therapy",
+    title: "Your Personalized Guide to Red & Infrared Light Therapy",
+    description:
+      "Not all light behaves the same. There’s a whole spectrum. By delivering specific wavelengths of light energy, we can target different depths and biological responses in the body.",
+    category: "Health",
+    sponsor: "Sunlighten",
+    publishedTime: "2026-05-12T09:00:00.000Z",
+    tags: ["partner"],
+    image: `${CDN}/c_fill,w_2000,h_1200,g_auto,fl_lossy,f_jpg/${LIGHT_IMG}`,
+    thumbnail: `${CDN}/c_fill,w_800,h_600,g_auto,q_85,fl_lossy,f_auto/${LIGHT_IMG}`,
+    author: {
+      name: "Alexandra B. Engler",
+      url: `${SITE}/wc/alexandra-b-engler`,
+    },
+    content: "light-guide",
   },
 ];
 

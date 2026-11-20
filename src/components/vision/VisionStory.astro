@@ -25,6 +25,8 @@ import VisionSupport from "./VisionSupport.astro";
 </div>
 
 <script>
+  import { startReveal } from "../../lib/reveal";
+
   const slides = [...document.querySelectorAll<HTMLElement>("[data-slide]")];
 
   const slideFor = (hash: string) => {
@@ -58,34 +60,6 @@ import VisionSupport from "./VisionSupport.astro";
 
   show(slideFor(location.hash), false);
 
-  const loaded = (img: HTMLImageElement | null) =>
-    !img || img.complete
-      ? Promise.resolve()
-      : new Promise<void>((resolve) => {
-          img.addEventListener("load", () => resolve(), { once: true });
-          img.addEventListener("error", () => resolve(), { once: true });
-        });
-
-  const reveal = (el: Element) => {
-    const img = el instanceof HTMLImageElement ? el : el.querySelector("img");
-    loaded(img).then(() => requestAnimationFrame(() => el.classList.add("is-revealed")));
-  };
-
-  const start = () => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          reveal(entry.target);
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.2, rootMargin: "100000px 0px -8% 0px" },
-    );
-    document.querySelectorAll("[data-reveal]").forEach((item) => observer.observe(item));
-  };
-
-  const firstBg = document.querySelector<HTMLImageElement>("[data-slide]:not([hidden]) img");
-  const timeout = new Promise<void>((resolve) => setTimeout(resolve, 2500));
-  Promise.race([Promise.all([loaded(firstBg), document.fonts.ready]), timeout]).then(() => setTimeout(start, 150));
+  const firstImage = document.querySelector<HTMLImageElement>("[data-slide]:not([hidden]) img");
+  startReveal(firstImage);
 </script>
